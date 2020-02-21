@@ -3,17 +3,21 @@
 namespace FoF\Upload\Providers;
 
 use Aws\S3\S3Client;
+use Exception;
 use FoF\Upload\Adapters;
 use FoF\Upload\Adapters\Qiniu;
+use FoF\Upload\Adapters\Upyun;
 use FoF\Upload\Helpers\Settings;
 use GuzzleHttp\Client as Guzzle;
 use Illuminate\Container\Container;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
+use FlarumChina\Flysystem\Upyun\UpyunAdapter;
 use League\Flysystem\Adapter as FlyAdapters;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use Overtrue\Flysystem\Qiniu\QiniuAdapter;
 use Qiniu\Http\Client as QiniuClient;
+use Upyun\Upyun as UpyunClient;
 
 class StorageServiceProvider extends ServiceProvider
 {
@@ -71,11 +75,16 @@ class StorageServiceProvider extends ServiceProvider
                                 return $this->qiniu($settings);
                             }
                             break;
+                        case 'upyun':
+                            if (class_exists(UpyunClient::class)) {
+                                return $this->upyun($settings);
+                            }
+                            break;
                         default:
                             return $this->local($settings);
                     }
 
-                    throw new \Exception("Unknown adapter $adapter or missing dependency");
+                    throw new Exception("Unknown adapter $adapter or missing dependency");
                 });
             });
     }
@@ -121,18 +130,6 @@ class StorageServiceProvider extends ServiceProvider
 
     /**
      * @param Settings $settings
-     *
-     * @return Adapters\Local
-     */
-    protected function local(Settings $settings)
-    {
-        return new Adapters\Local(
-            new FlyAdapters\Local(public_path('assets/files'))
-        );
-    }
-
-    /**
-     * @param  Settings $settings
      * @return Adapters\Qiniu
      */
     protected function qiniu(Settings $settings)
@@ -145,5 +142,33 @@ class StorageServiceProvider extends ServiceProvider
         );
 
         return new Qiniu($client);
+    }
+
+    /**
+     * @param Settings $settings
+     * @return Adapters\Upyun
+     */
+    protected function upyun(Settings $settings)
+    {
+        $client = new UpyunAdapter(
+            $settings->get('upyunBucket'),
+            $settings->get('upyunOperator'),
+            $settings->get('upyunPassword'),
+            $settings->get('cdnUrl')
+        );
+
+        return new Upyun($client);
+    }
+
+    /**
+     * @param Settings $settings
+     *
+     * @return Adapters\Local
+     */
+    protected function local(Settings $settings)
+    {
+        return new Adapters\Local(
+            new FlyAdapters\Local(public_path('assets/files'))
+        );
     }
 }

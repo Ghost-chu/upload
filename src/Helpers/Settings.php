@@ -8,6 +8,7 @@ use Flarum\Settings\SettingsRepositoryInterface;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Qiniu\Http\Client as QiniuClient;
+use Upyun\Upyun as UpyunClient;
 
 class Settings
 {
@@ -75,6 +76,10 @@ class Settings
 
         if (class_exists(QiniuClient::class)) {
             $methods[] = 'qiniu';
+        }
+
+        if (class_exists(UpyunClient::class)) {
+            $methods[] = 'upyun';
         }
 
         $methods[] = 'imgur';

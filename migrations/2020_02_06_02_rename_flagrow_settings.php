@@ -31,6 +31,10 @@ return [
                      'qiniuKey',
                      'qiniuSecret',
                      'qiniuBucket',
+                     'upyunBucket',
+                     'upyunOperator',
+                     'upyunPassword',
+                     'upyunBucket',
                  ] as $key) {
             $value = $settings->get('flagrow.upload.' . $key);
 

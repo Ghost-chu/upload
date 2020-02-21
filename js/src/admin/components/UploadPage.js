@@ -35,6 +35,10 @@ export default class UploadPage extends Component {
             'qiniuKey',
             'qiniuSecret',
             'qiniuBucket',
+            // Upyun
+            'upyunBucket',
+            'upyunOperator',
+            'upyunPassword',
         ];
 
         // the checkboxes we need to watch and to save.
@@ -275,6 +279,24 @@ export default class UploadPage extends Component {
                             m('input.FormControl', {
                                 value: this.values.qiniuBucket() || '',
                                 oninput: m.withAttr('value', this.values.qiniuBucket),
+                            }),
+                        ]),
+                        m('fieldset', [
+                            m('legend', app.translator.trans('fof-upload.admin.labels.upyun.title')),
+                            m('label', app.translator.trans('fof-upload.admin.labels.upyun.operator')),
+                            m('input.FormControl', {
+                                value: this.values.upyunOperator() || '',
+                                oninput: m.withAttr('value', this.values.upyunOperator),
+                            }),
+                            m('label', {}, app.translator.trans('fof-upload.admin.labels.upyun.password')),
+                            m('input.FormControl', {
+                                value: this.values.upyunPassword() || '',
+                                oninput: m.withAttr('value', this.values.upyunPassword),
+                            }),
+                            m('label', {}, app.translator.trans('fof-upload.admin.labels.upyun.bucket')),
+                            m('input.FormControl', {
+                                value: this.values.upyunBucket() || '',
+                                oninput: m.withAttr('value', this.values.upyunBucket),
                             }),
                         ]),
                         m('fieldset', [
