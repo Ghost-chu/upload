@@ -4,10 +4,10 @@ namespace FoF\Upload\Downloader;
 
 use FoF\Upload\Commands\Download;
 use FoF\Upload\Contracts\Downloader;
-use FoF\Upload\Exceptions\InvalidDownloadException;
 use FoF\Upload\File;
 use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface;
+use Laminas\Diactoros\Response\RedirectResponse;
 
 class DefaultDownloader implements Downloader
 {
@@ -34,26 +34,25 @@ class DefaultDownloader implements Downloader
     }
 
     /**
-     * @param File     $file
+     * @param File $file
      * @param Download $command
-     *
-     * @throws InvalidDownloadException
      *
      * @return ResponseInterface
      */
     public function download(File $file, Download $command)
     {
-        try {
-            $response = $this->api->get($file->url);
-        } catch (\Exception $e) {
-            throw new InvalidDownloadException($e->getMessage());
-        }
-
-        if ($response->getStatusCode() == 200) {
-            $response = $this->mutateHeaders($response, $file);
-
-            return $response;
-        }
+//        try {
+//            $response = $this->api->get($file->url);
+//        } catch (\Exception $e) {
+//            throw new InvalidDownloadException($e->getMessage());
+//        }
+//
+//        if ($response->getStatusCode() == 200) {
+//            $response = $this->mutateHeaders($response, $file);
+//
+//            return $response;
+//        }
+        return new RedirectResponse($file->url);
     }
 
     /**
