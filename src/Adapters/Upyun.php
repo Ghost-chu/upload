@@ -14,7 +14,7 @@ class Upyun extends Flysystem implements UploadAdapter
         /** @var Settings $settings */
         $settings = app()->make(Settings::class);
         $path = $file->getAttribute('path');
-        if ($cdnUrl = $settings->get('cdnUrl')) {
+        if ($cdnUrl = $settings->get('upyunCdn')) {
             $file->url = sprintf('%s/%s', $cdnUrl, $path);
         } else {
             throw new ValidationException(['upload' => 'Upyun cloud CDN address is not configured.']);

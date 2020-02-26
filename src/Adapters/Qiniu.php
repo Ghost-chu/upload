@@ -14,7 +14,7 @@ class Qiniu extends Flysystem implements UploadAdapter
         /** @var Settings $settings */
         $settings = app()->make(Settings::class);
         $path = $file->getAttribute('path');
-        if ($cdnUrl = $settings->get('cdnUrl')) {
+        if ($cdnUrl = $settings->get('qiniuCdn')) {
             $file->url = sprintf('%s/%s', $cdnUrl, $path);
         } else {
             throw new ValidationException(['upload' => 'QiNiu cloud CDN address is not configured.']);

@@ -104,6 +104,7 @@ class StorageServiceProvider extends ServiceProvider
                         'secret' => $settings->get('awsS3Secret'),
                     ],
                     'region' => empty($settings->get('awsS3Region')) ? null : $settings->get('awsS3Region'),
+                    'endpoint' => $settings->get('awsS3Endpoint') ?? null,
                     'version' => 'latest',
                 ]),
                 $settings->get('awsS3Bucket')
@@ -138,7 +139,7 @@ class StorageServiceProvider extends ServiceProvider
             $settings->get('qiniuKey'),
             $settings->get('qiniuSecret'),
             $settings->get('qiniuBucket'),
-            $settings->get('cdnUrl')
+            $settings->get('qiniuCdn')
         );
 
         return new Qiniu($client);
@@ -154,7 +155,7 @@ class StorageServiceProvider extends ServiceProvider
             $settings->get('upyunBucket'),
             $settings->get('upyunOperator'),
             $settings->get('upyunPassword'),
-            $settings->get('cdnUrl')
+            $settings->get('upyunCdn')
         );
 
         return new Upyun($client);

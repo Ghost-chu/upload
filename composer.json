@@ -23,7 +23,8 @@
         "flarum/core": "0.1.0",
         "ramsey/uuid": "^3.5.2",
         "overtrue/flysystem-qiniu": "1.0.4",
-        "flarumchina/flysystem-upyun": "1.0.6"
+        "flarumchina/flysystem-upyun": "1.0.6",
+        "league/flysystem-aws-s3-v3": "^1.0"
     },
     "replace": {
         "flagrow/upload": "*"

@@ -31,14 +31,18 @@ export default class UploadPage extends Component {
             'awsS3Secret',
             'awsS3Bucket',
             'awsS3Region',
+            'awsS3Cdn',
+            'awsS3Endpoint',
             // QIniu
             'qiniuKey',
             'qiniuSecret',
             'qiniuBucket',
+            'qiniuCdn',
             // Upyun
             'upyunBucket',
             'upyunOperator',
             'upyunPassword',
+            'upyunCdn',
         ];
 
         // the checkboxes we need to watch and to save.
@@ -280,6 +284,11 @@ export default class UploadPage extends Component {
                                 value: this.values.qiniuBucket() || '',
                                 oninput: m.withAttr('value', this.values.qiniuBucket),
                             }),
+                            m('label', {}, app.translator.trans('fof-upload.admin.labels.qiniu.cdn')),
+                            m('input.FormControl', {
+                                value: this.values.qiniuCdn() || '',
+                                oninput: m.withAttr('value', this.values.qiniuCdn),
+                            }),
                         ]),
                         m('fieldset', [
                             m('legend', app.translator.trans('fof-upload.admin.labels.upyun.title')),
@@ -297,6 +306,11 @@ export default class UploadPage extends Component {
                             m('input.FormControl', {
                                 value: this.values.upyunBucket() || '',
                                 oninput: m.withAttr('value', this.values.upyunBucket),
+                            }),
+                            m('label', {}, app.translator.trans('fof-upload.admin.labels.upyun.cdn')),
+                            m('input.FormControl', {
+                                value: this.values.upyunCdn() || '',
+                                oninput: m.withAttr('value', this.values.upyunCdn),
                             }),
                         ]),
                         m('fieldset', [
@@ -320,6 +334,16 @@ export default class UploadPage extends Component {
                             m('input.FormControl', {
                                 value: this.values.awsS3Region() || '',
                                 oninput: m.withAttr('value', this.values.awsS3Region),
+                            }),
+                            m('label', app.translator.trans('fof-upload.admin.labels.aws-s3.endpoint')),
+                            m('input.FormControl', {
+                                value: this.values.awsS3Endpoint() || '',
+                                oninput: m.withAttr('value', this.values.awsS3Endpoint),
+                            }),
+                            m('label', app.translator.trans('fof-upload.admin.labels.aws-s3.cdn')),
+                            m('input.FormControl', {
+                                value: this.values.awsS3Cdn() || '',
+                                oninput: m.withAttr('value', this.values.awsS3Cdn),
                             }),
                         ]),
                         Button.component({

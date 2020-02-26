@@ -26,15 +26,19 @@ return [
                      'awsS3Secret',
                      'awsS3Bucket',
                      'awsS3Region',
+                     'awsS3Cdn',
+                     'awsS3Endpoint',
                      'disableHotlinkProtection',
                      'disableDownloadLogging',
                      'qiniuKey',
                      'qiniuSecret',
                      'qiniuBucket',
+                     'qiniuCdn',
                      'upyunBucket',
                      'upyunOperator',
                      'upyunPassword',
                      'upyunBucket',
+                     'upyunCdn',
                  ] as $key) {
             $value = $settings->get('flagrow.upload.' . $key);
 

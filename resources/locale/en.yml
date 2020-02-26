@@ -25,6 +25,8 @@ fof-upload:
         region: Region
         secret: Secret
         title: AWS S3 storage settings
+        endpoint: Endpoint
+        cdn: AWS S3 Url
       disable-download-logging:
         title: Disable logging downloads
         toggle: Disable
@@ -42,11 +44,13 @@ fof-upload:
         key: Key
         secret: Secret
         bucket: Bucket
+        cdn: Qiniu Url
       upyun:
         title: Upyun storage settings
         operator: Operator
         password: Password
         bucket: Bucket
+        cdn: Upyun Url
       preferences:
         max_file_size: Maximum file size (in kilobytes)
         mime_types: 'Configure your mime type, upload adapter mapping'

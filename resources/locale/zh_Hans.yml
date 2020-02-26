@@ -15,9 +15,11 @@ fof-upload:
       aws-s3:
         bucket: Bucket
         key: Key
-        region: 区域
+        region: Region
         secret: Secret
         title: AWS S3 存储设置
+        endpoint: Endpoint
+        cdn: 域名
       disable-download-logging:
         title: 禁用下载日志
         toggle: 禁用
@@ -42,6 +44,7 @@ fof-upload:
         key: Key
         secret: Secret
         title: 七牛存储设置
+        cdn: 域名
       preferences:
         max_file_size: 最大文件大小 (单位 KB)
         mime_types: 设置 MIME 类型及上传接口
@@ -60,6 +63,7 @@ fof-upload:
         password: 密码
         operator: 操作员
         title: 又拍云存储设置
+        cdn: 域名
     permissions:
       download_label: 下载附件
       upload_label: 上传附件
