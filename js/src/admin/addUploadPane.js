@@ -12,7 +12,7 @@ export default function () {
         items.add('fof-upload', AdminLinkButton.component({
             href: app.route('fof-upload'),
             icon: 'far fa-file',
-            children: 'File Upload',
+            children: app.translator.trans('fof-upload.admin.title'),
             description: app.translator.trans('fof-upload.admin.help_texts.description'),
         }));
     });

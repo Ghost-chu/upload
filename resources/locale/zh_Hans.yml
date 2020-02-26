@@ -1,5 +1,6 @@
 fof-upload:
   admin:
+    title: 文件上传
     buttons:
       save: 保存修改
     help_texts:

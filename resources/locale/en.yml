@@ -1,5 +1,6 @@
 fof-upload:
   admin:
+    title: File Upload
     buttons:
       save: Save settings
     help_texts:
