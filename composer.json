@@ -1,5 +1,5 @@
 {
-    "name": "Ghost-chu/upload",
+    "name": "ghost-chu/upload",
     "description": "The file upload extension for the Flarum forum with insane intelligence.",
     "keywords": [
         "upload",
@@ -54,7 +54,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Ghost-cji\\Upload\\": "src/"
+            "ghost-cji\\Upload\\": "src/"
         }
     }
 }
