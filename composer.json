@@ -54,7 +54,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ghost-cji\\Upload\\": "src/"
+            "ghost-chu\\Upload\\": "src/"
         }
     }
 }
